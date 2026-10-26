@@ -1,0 +1,27 @@
+from calculate_functions.calculation_mass_offset import calculate_mass_hole
+
+#funtion to calculate the moment of inertia of the cilinder with a hole
+def calucate_moment_of_inertia(mass_old:float, radius_cilinder:float, radius_hole:float, offset_1:float, offset_2:float):
+
+    '''
+    mass_old: the mass of the cilinder without a hole [kg] \\
+    radius_cilinder: the radius of the complete cilinder [m] \\
+    radius_hole: the radius of the hole we made in the cilinder [m] \\
+    offset_1: the distance between the center of mass and the rotation axis [m] \\
+    offset_2: the distance between the center of the cut out hole and the rotation axis [m]
+    '''
+
+    #calculating the mass of the new cilinder with hole and mass of the hole
+    mass_hole = calculate_mass_hole(mass_old, radius_cilinder, radius_hole)
+    mass_new = mass_old - mass_hole
+
+    #calculating the moment of inertia of the old cilinder and the hole of the cilinder
+    moment_of_inertia_old_cilinder = 0.5 * mass_old * (radius_cilinder) ** 2
+    moment_of_inertia_hole = 0.5 * mass_hole * (radius_hole) ** 2 + mass_hole * (offset_2) ** 2
+
+    #calculating the moment of inertia of the new cilinder looking at it from the center of mass
+    moment_of_inertia_cm = moment_of_inertia_old_cilinder - moment_of_inertia_hole
+
+    #calculating the moment of inertia of the new cilinder looking at it form the ratation axis
+    moment_of_inertia = moment_of_inertia_cm + mass_new * (offset_1) ** 2
+    return moment_of_inertia
