@@ -8,7 +8,7 @@ def calculate_mass_hole(mass_old:float, radius_cilinder:float, radius_hole:float
     '''
 
     #calculating the mass of the taken out hole
-    mass_hole = (radius_hole ** 2 / radius_cilinder ** 4) * mass_old
+    mass_hole = (((radius_hole) / (radius_cilinder)) ** 2) * mass_old
     return mass_hole
 
 #calculating the distance between the center of mass and the rotation axis
