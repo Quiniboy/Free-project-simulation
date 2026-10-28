@@ -2,7 +2,7 @@ from constants_folder.constants import *
 from calculate_functions.calculation_mass_offset import calculate_mass_hole
 
 #calculating the acceleration and angular acceleration
-def calculating_acceleration_and_alpha(moment_of_inertia:float, mass_old:float, radius:float, angle_center_of_mass:float, angle_slope:float, omega:float, offset_1:float, radius_hole):
+def calculating_acceleration_and_alpha(moment_of_inertia:float, mass_old:float, radius:float, angle_center_of_mass:float, angle_slope:float, omega:float, offset_1:float, radius_hole:float, mass_added:float):
 
     '''
     moment_of_inertia: the moment of inertia of the cilinder with a hole [kg m^2] \\
@@ -11,10 +11,12 @@ def calculating_acceleration_and_alpha(moment_of_inertia:float, mass_old:float, 
     angle_center_of_mass: the angle of the center of mass of the cilinder with hole if you take the slope as the x-as [rad] \\
     angle_slope: the angle of the slope [rad]\\
     omega: the angular velocity of the cilinder\\
-    offset_1: the distance between the center of mass and the rotation axis [m]
+    offset_1: the distance between the center of mass and the rotation axis [m]\\
+    radius_hole: the radius of the hole that has been taken out of the cilinder [m]\\
+    mass_added: the mass of the weight that has been added to the hole [kg]
     '''
     mass_hole = calculate_mass_hole(mass_old, radius, radius_hole)
-    mass_new = mass_old - mass_hole
+    mass_new = mass_old - mass_hole + mass_added
     
     #calculating the acceleration    
     acceleration = ((radius) ** 2 * mass_new * GRAVITATIONAL_VELOCITY * (np.sin(angle_slope) + (offset_1 / radius) * np.cos(angle_slope - angle_center_of_mass))) / (((radius) ** 2) * mass_new + moment_of_inertia)

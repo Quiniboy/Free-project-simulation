@@ -4,7 +4,7 @@ from calculate_functions.calculation_mass_offset import calculate_mass_hole
 
 
 #function for calculating the energy
-def calculating_energy(moment_of_inertia:float, velocity:float, mass_old:float, angular_velocity:float, radius_cilinder:float, radius_hole:float, angle_slope:float, position:float, angle_center_of_mass:float, offset_1:float):
+def calculating_energy(moment_of_inertia:float, velocity:float, mass_old:float, angular_velocity:float, radius_cilinder:float, radius_hole:float, angle_slope:float, position:float, angle_center_of_mass:float, offset_1:float, mass_added:float):
     
     '''
     moment_of_inertia: the moment of inertia of the cilinder with hole [kg m^2] \\
@@ -16,7 +16,8 @@ def calculating_energy(moment_of_inertia:float, velocity:float, mass_old:float, 
     angle_slope: the angle of the slope [rad] \\
     position: the distance the object has already travelled [m] \\
     angle_center_of_mass: the angle of the center of mass of the cilinder with hole if you take the slope as the x-as [rad] \\
-    offset_1: the distance between the center of mass and the rotation axis [m] 
+    offset_1: the distance between the center of mass and the rotation axis [m] \\
+    mass_added: the mass of the weight that has been added to the hole [kg] 
     '''
 
     #calculating the height of the ball
@@ -26,7 +27,8 @@ def calculating_energy(moment_of_inertia:float, velocity:float, mass_old:float, 
 
     #calculating the mass of the new cilinder with hole and mass of the hole
     mass_hole = calculate_mass_hole(mass_old, radius_cilinder, radius_hole)
-    mass_new = mass_old - mass_hole
+    mass_new = mass_old - mass_hole + mass_added
+
     velocity_center_of_mass = calculate_velocity_center_of_mass(angle_center_of_mass, velocity, angular_velocity, offset_1)
 
     #calculating the kinetic and potential energy
