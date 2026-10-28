@@ -16,12 +16,17 @@ def calucate_moment_of_inertia(mass_old:float, radius_cilinder:float, radius_hol
     mass_new = mass_old - mass_hole
 
     #calculating the moment of inertia of the old cilinder and the hole of the cilinder
-    moment_of_inertia_old_cilinder = 0.5 * mass_old * (radius_cilinder) ** 2
-    moment_of_inertia_hole = 0.5 * mass_hole * (radius_hole) ** 2 + mass_hole * (offset_2) ** 2
+    #moment_of_inertia_old_cilinder = 0.5 * mass_old * (radius_cilinder) ** 2
+    #moment_of_inertia_hole = 0.5 * mass_hole * (radius_hole) ** 2 + mass_hole * (offset_2) ** 2
 
     #calculating the moment of inertia of the new cilinder looking at it from the center of mass
-    moment_of_inertia_cm = moment_of_inertia_old_cilinder - moment_of_inertia_hole
+    #moment_of_inertia = moment_of_inertia_old_cilinder - moment_of_inertia_hole
 
     #calculating the moment of inertia of the new cilinder looking at it form the ratation axis
-    moment_of_inertia = moment_of_inertia_cm + mass_new * (offset_1) ** 2
+
+
+    #Sanders formula to test our energy
+    moment_of_inertia = 0.5 * mass_new * (radius_cilinder ** 2 + radius_hole ** 2 - (2 * offset_2 ** 2 * radius_hole ** 2) / (radius_cilinder ** 2 - radius_hole ** 2))
+
+
     return moment_of_inertia

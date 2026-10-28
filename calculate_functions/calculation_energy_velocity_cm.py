@@ -47,7 +47,7 @@ def calculate_velocity_center_of_mass(angle_center_of_mass:float, velocity_rotat
     offset_1: the distance between the center of mass and the rotation axis [m] 
     '''
     #calculates the velocity from the point of view of the rotation axis
-    relative_velocity_center_of_mass = -1 * angular_velocity * offset_1
+    relative_velocity_center_of_mass = angular_velocity * offset_1
 
     #splitting the relative velocity up into a x and y factor
     relative_velocity_center_of_mass_x = relative_velocity_center_of_mass * np.sin(angle_center_of_mass)

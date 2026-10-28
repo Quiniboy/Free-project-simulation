@@ -14,9 +14,9 @@ def calculating_acceleration_and_alpha(moment_of_inertia:float, mass:float, radi
     '''
     
     #calculating the acceleration    
-    #acceleration = ((radius) ** 2 * mass * GRAVITATIONAL_VELOCITY * (np.sin(angle_slope) + (offset_1 / radius) * np.cos(angle_slope - angle_center_of_mass))) / (((radius) ** 2) * mass + moment_of_inertia)
-    acceleration = ((radius) ** 2 * mass * GRAVITATIONAL_VELOCITY * (np.sin(angle_slope) + (offset_1 / radius) * ((np.cos(angle_slope) * np.cos(angle_center_of_mass) + np.sin(angle_slope) * np.sin(angle_center_of_mass))))) / (((radius) ** 2) * mass + moment_of_inertia)
-    
+    acceleration = ((radius) ** 2 * mass * GRAVITATIONAL_VELOCITY * (np.sin(angle_slope) + (offset_1 / radius) * np.cos(angle_slope - angle_center_of_mass))) / (((radius) ** 2) * mass + moment_of_inertia)
+    #acceleration = ((radius) ** 2 * mass * GRAVITATIONAL_VELOCITY * (np.sin(angle_slope) + (offset_1 / radius) * ((np.cos(angle_slope) * np.cos(angle_center_of_mass) + np.sin(angle_slope) * np.sin(angle_center_of_mass))))) / (((radius) ** 2) * mass + moment_of_inertia)
+
     # calculating the angular acceleration It's an asumption that it rols smoothly, that obivously doesn't happend if angle slope is bigger than 90 deg
     if angle_slope < np.deg2rad(90) % (2 * np.pi):
         alpha = -acceleration / radius
