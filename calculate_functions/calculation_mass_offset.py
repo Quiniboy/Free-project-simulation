@@ -29,6 +29,6 @@ def calculating_offset_1(offset_2:float, mass_old:float, radius_cilinder:float, 
     #calculating the distance between the center of mass and the rotation axis
     offset_1_without_added_mass = abs((-1 * mass_hole * offset_2) / (mass_old + -1 * mass_hole))
 
-    offset_1 = abs(offset_1_without_added_mass - (mass_added * offset_2 + offset_1_without_added_mass) / (mass_without_weight + mass_added))
+    offset_1 = abs(offset_1_without_added_mass - (mass_added * (offset_2 + offset_1_without_added_mass)) / (mass_without_weight + mass_added))
 
     return offset_1
