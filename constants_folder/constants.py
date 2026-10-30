@@ -9,6 +9,7 @@ ADDED_MASS = 0
 RADIUS_CILINDER =  0.075               #[m]
 RADIUS_HOLE =   0.0175               #[m]
 OFFSET_2 = 0.0225                     #[m]
+SPECIFIC_FOR_OURS = True
 '''
 
 #stress testing constants
@@ -16,10 +17,13 @@ OFFSET_2 = 0.0225                     #[m]
 GRAVITATIONAL_VELOCITY = 9.81       #[m/s^2]
 LENGHT = 20.0                      #[m]
 MASS = 20                         #[kg]
-ADDED_MASS = 0
 RADIUS_CILINDER =  1               #[m]
 RADIUS_HOLE =   0.5               #[m]
 OFFSET_2 = 0.5                   #[m]
+MASS_STEEL = 142e-3
+MASS_CONCRETE = 293.7e-3 + 142e-3
+ADDED_MASS = MASS_STEEL + MASS_CONCRETE
+SPECIFIC_FOR_OURS = True
 
 #np array can have as many angles as you want
 #it has to be in radians to work

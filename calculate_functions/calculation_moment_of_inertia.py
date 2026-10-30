@@ -1,4 +1,5 @@
 from calculate_functions.calculation_mass_offset import calculate_mass_hole
+from constants_folder.constants import *
 
 #funtion to calculate the moment of inertia of the cilinder with a hole
 def calucate_moment_of_inertia(mass_old:float, radius_cilinder:float, radius_hole:float, offset_1:float, offset_2:float, mass_added:float):
@@ -20,7 +21,12 @@ def calucate_moment_of_inertia(mass_old:float, radius_cilinder:float, radius_hol
     #calculating the moment of inertia of the old cilinder and the hole of the cilinder
     moment_of_inertia_old_cilinder = 0.5 * mass_old * (radius_cilinder) ** 2
     moment_of_inertia_hole = 0.5 * mass_hole * (radius_hole) ** 2 + mass_hole * (offset_2) ** 2
-    moment_of_inertia_added_weight = 0.5 * mass_added * (radius_hole) ** 2 + mass_added * (offset_2) ** 2
+
+    if SPECIFIC_FOR_OURS:
+        moment_of_inertia_added_weight = MASS_STEEL * radius_hole **2 + 0.5 * MASS_CONCRETE * (radius_hole) ** 2 + (MASS_STEEL + MASS_CONCRETE) * (offset_2) ** 2
+
+    else:    
+        moment_of_inertia_added_weight = 0.5 * mass_added * (radius_hole) ** 2 + mass_added * (offset_2) ** 2
 
     #calculating the moment of inertia of the new cilinder looking at it from the center of mass
     moment_of_inertia = moment_of_inertia_old_cilinder - moment_of_inertia_hole + moment_of_inertia_added_weight
