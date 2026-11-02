@@ -20,6 +20,8 @@ def calculating_acceleration_and_alpha(moment_of_inertia:float, mass_old:float, 
     
     #calculating the acceleration    
     acceleration = ((radius) ** 2 * mass_new * GRAVITATIONAL_VELOCITY * (np.sin(angle_slope) + (offset_1 / radius) * np.cos(angle_slope - angle_center_of_mass))) / (((radius) ** 2) * mass_new + moment_of_inertia)
+
+    #to test if the result are the same if we didn't use the math rule (somregel met cos in nederlands)
     #acceleration = ((radius) ** 2 * mass_new * GRAVITATIONAL_VELOCITY * (np.sin(angle_slope) + (offset_1 / radius) * ((np.cos(angle_slope) * np.cos(angle_center_of_mass) + np.sin(angle_slope) * np.sin(angle_center_of_mass))))) / (((radius) ** 2) * mass_new + moment_of_inertia)
 
     # calculating the angular acceleration It's an asumption that it rols smoothly, that obivously doesn't happend if angle slope is bigger than 90 deg
